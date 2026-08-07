@@ -9,7 +9,7 @@ export default async function getHTML(baseUrl, pathname, ref, sanitize = false) 
     if (ref) {
         headers.Refferer = ref.startsWith("http") ? ref : new URL(ref, baseUrl).toString();
     }
-    const response = await fetch(url, { headers, redirect: "manual" });
+    const response = await fetch(url, { headers });
     if (!response.ok) {
         response.status > 399 ? errorinCuy(response.status) : errorinCuy(404);
     }
