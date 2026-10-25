@@ -11,9 +11,19 @@ export default async function getHTML(
   sanitize = false,
 ): Promise<string> {
   const url = new URL(pathname, baseUrl);
-  const headers: Record<string, string> = {
-    "User-Agent": userAgent,
-  };
+const headers: Record<string, string> = {
+  "User-Agent": userAgent,
+  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+  "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+  "Accept-Encoding": "gzip, deflate, br",
+  "Cache-Control": "no-cache",
+  "Pragma": "no-cache",
+  "Sec-Fetch-Dest": "document",
+  "Sec-Fetch-Mode": "navigate",
+  "Sec-Fetch-Site": "none",
+  "Sec-Fetch-User": "?1",
+  "Upgrade-Insecure-Requests": "1",
+};
 
   if (ref) {
     headers.Refferer = ref.startsWith("http") ? ref : new URL(ref, baseUrl).toString();
